@@ -5,7 +5,7 @@ function TupleState(first, second) {
 
 
 function Tuple(first) {
-	return second => new TupleState(first, second);
+    return second => new TupleState(first, second);
 }
 
 
@@ -19,6 +19,11 @@ TupleState.prototype.mapSecond = function (f) {
     return Tuple(this.first)(f(this.second));
 };
 assumption(Tuple("Hello")(2).mapSecond(x => x + x).second === 4);
+
+
+TupleState.prototype.toString = function () {
+    return `(${this.first.toString()}, ${this.second.toString()})`;
+};
 
 
 module.exports = Tuple;
